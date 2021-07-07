@@ -1,9 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    alpha.image.policy.openshift.io/resolve-names: '*'
-    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"lb-deployment:latest","namespace":"openshift"},"fieldPath":"spec.template.spec.containers[?(@.name==\"lb-deployment\")].image","pause":"false"}]'
   generation: 2
   labels:
     app: lb-deployment
