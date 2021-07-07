@@ -13,6 +13,7 @@ metadata:
     app.openshift.io/runtime-version: latest
   name: lb-deployment
 spec:
+  host: lb-deployment-lb-demo.apps-crc.testing
   port:
     targetPort: 80-tcp
   to:
