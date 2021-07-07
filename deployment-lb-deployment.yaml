@@ -4,7 +4,6 @@ metadata:
   annotations:
     alpha.image.policy.openshift.io/resolve-names: '*'
     image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"lb-deployment:latest","namespace":"openshift"},"fieldPath":"spec.template.spec.containers[?(@.name==\"lb-deployment\")].image","pause":"false"}]'
-  creationTimestamp: "2021-07-01T06:09:02Z"
   generation: 2
   labels:
     app: lb-deployment
