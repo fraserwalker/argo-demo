@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: lb-deployment
+    app.kubernetes.io/component: lb-deployment
+    app.kubernetes.io/instance: lb-deployment
+    app.kubernetes.io/part-of: Demo
+    app.openshift.io/runtime-version: latest
+  name: lb-deployment
+spec:
+  ports:
+  - name: 80-tcp
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: lb-deployment
+    deploymentconfig: lb-deployment
+  sessionAffinity: None
+  type: ClusterIP

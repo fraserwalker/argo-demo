@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    alpha.image.policy.openshift.io/resolve-names: '*'
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"lb-deployment:latest","namespace":"openshift"},"fieldPath":"spec.template.spec.containers[?(@.name==\"lb-deployment\")].image","pause":"false"}]'
+  creationTimestamp: "2021-07-01T06:09:02Z"
+  generation: 2
+  labels:
+    app: lb-deployment
+    app.kubernetes.io/component: lb-deployment
+    app.kubernetes.io/instance: lb-deployment
+    app.kubernetes.io/part-of: Demo
+    app.openshift.io/runtime: nginx
+    app.openshift.io/runtime-namespace: lb-demo
+  name: lb-deployment
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: lb-deployment
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftWebConsole
+      labels:
+        app: lb-deployment
+        deploymentconfig: lb-deployment
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/openshift/lb-deployment:latest
+        imagePullPolicy: Always
+        name: lb-deployment
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        runAsUser: 0
+      terminationGracePeriodSeconds: 30
