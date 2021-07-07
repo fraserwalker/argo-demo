@@ -5,54 +5,14 @@ metadata:
     haproxy.router.openshift.io/balance: leastconn
     haproxy.router.openshift.io/disable_cookies: "true"
     openshift.io/host.generated: "true"
-  creationTimestamp: "2021-07-01T06:09:02Z"
   labels:
     app: lb-deployment
     app.kubernetes.io/component: lb-deployment
     app.kubernetes.io/instance: lb-deployment
     app.kubernetes.io/part-of: Demo
     app.openshift.io/runtime-version: latest
-  managedFields:
-  - apiVersion: route.openshift.io/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:status:
-        f:ingress: {}
-    manager: openshift-router
-    operation: Update
-    time: "2021-07-01T06:09:02Z"
-  - apiVersion: route.openshift.io/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:annotations:
-          f:haproxy.router.openshift.io/balance: {}
-          f:haproxy.router.openshift.io/disable_cookies: {}
-        f:labels:
-          .: {}
-          f:app: {}
-          f:app.kubernetes.io/component: {}
-          f:app.kubernetes.io/instance: {}
-          f:app.kubernetes.io/part-of: {}
-          f:app.openshift.io/runtime-version: {}
-      f:spec:
-        f:port:
-          .: {}
-          f:targetPort: {}
-        f:to:
-          f:kind: {}
-          f:name: {}
-          f:weight: {}
-        f:wildcardPolicy: {}
-    manager: Mozilla
-    operation: Update
-    time: "2021-07-01T06:28:26Z"
   name: lb-deployment
-  namespace: lb-demo
-  resourceVersion: "9680450"
-  uid: 91608e1f-70d1-402e-ada7-044a53e554d8
 spec:
-  host: lb-deployment-lb-demo.apps-crc.testing
   port:
     targetPort: 80-tcp
   to:
@@ -60,13 +20,3 @@ spec:
     name: lb-deployment
     weight: 100
   wildcardPolicy: None
-status:
-  ingress:
-  - conditions:
-    - lastTransitionTime: "2021-07-01T06:09:02Z"
-      status: "True"
-      type: Admitted
-    host: lb-deployment-lb-demo.apps-crc.testing
-    routerCanonicalHostname: apps-crc.testing
-    routerName: default
-    wildcardPolicy: None
