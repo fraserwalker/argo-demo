@@ -30,7 +30,7 @@ spec:
         deploymentconfig: lb-deployment
     spec:
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/openshift/lb-deployment:latest
+      - image: quay.io/bitnami/nginx:latest
         imagePullPolicy: Always
         name: lb-deployment
         ports:
