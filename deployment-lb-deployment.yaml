@@ -30,7 +30,7 @@ spec:
         deploymentconfig: lb-deployment
     spec:
       containers:
-      - image: registry.access.redhat.com/ubi8/nginx-118:1-51
+      - image: saturnism/helloworld-java-quarkus
         imagePullPolicy: Always
         name: lb-deployment
         ports:
