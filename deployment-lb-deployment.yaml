@@ -30,7 +30,7 @@ spec:
         deploymentconfig: lb-deployment
     spec:
       containers:
-      - image: quay.io/bitnami/nginx:latest
+      - image: registry.access.redhat.com/ubi8/nginx-118:1-51
         imagePullPolicy: Always
         name: lb-deployment
         ports:
